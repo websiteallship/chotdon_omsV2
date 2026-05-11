@@ -1,0 +1,23 @@
+﻿#,"Mã 
+đối tác",Tên  đối tác,SKU,Mã SKU đối tác,Giá,Tên sản phẩm,Mã sản phẩm khai báo thuế,Tên sản phẩm khai báo thuế,VAT,"Loại 
+lưu trữ",Quản lý theo hạn sử dụng,Quản lý số lô,Hình thức xuất kho,Link hình ảnh,"Loại 
+sản phẩm","Mã 
+danh 
+mục","Mã 
+đơn vị tính","Kích 
+hoạt",Ngày gởi thông báo hết hạn,"Hạn 
+sử dụng 
+tối thiểu 
+xuất kho 
+theo ngày","Ghi chú 
+đóng gói",Sản phẩm batch lữu trữ Serial khi xuất kho,Không theo dõi ngày nhập kho,Thời hạn tối thiểu nhập kho (%),Thời hạn tối thiểu xuất kho (%),Sản phẩm có mã vạch,"Loại
+kho","Thời hạn sử dụng
+(tháng)","Dài
+(cm)","Rộng
+(cm)","Cao
+(cm)","Khối lượng
+(gram)",Tạo bởi,Tạo lúc,
+1,ALL,CÔNG TY TNHH ALLSHIP,AS5018OR,AS5018OR,35000,AS5018OR - Dao cắt băng keo cầm tay (size 2 inches) màu cam,DCCK001,Dao cắt băng keo cầm tay (size 2 inches) màu cam,8,Hàng quản lý theo số lượng,No,No,Không định nghĩa,,Hàng lẻ,DCCK,Cai,Yes,,,,No,Yes,70,80,Yes,Kho thường,,10,10,10,500,all.admin - ALLSHIP,20-03-2026 14:36:04,159000
+2,ALL,CÔNG TY TNHH ALLSHIP,AS5018BL,AS5018BL,35000,AS5018BL - Dao cắt băng keo cầm tay (size 2 inches) màu xanh dương,DCCK002,Dao cắt băng keo cầm tay (size 2 inches) màu xanh dương,8,Hàng quản lý theo số lượng,No,No,Không định nghĩa,,Hàng lẻ,DCCK,Cai,Yes,,,,No,Yes,70,80,Yes,Kho thường,,10,10,20,500,all.admin - ALLSHIP,20-03-2026 14:36:04,159000
+3,ALL,CÔNG TY TNHH ALLSHIP,AS6018OR,AS6018OR,40000,AS6018OR - Dao cắt băng keo cầm tay (size 2.5 inches) màu cam,DCCK003,Dao cắt băng keo cầm tay (size 2.5 inches) màu cam,8,Hàng quản lý theo số lượng,No,No,Không định nghĩa,,Hàng lẻ,DCCK,Cai,Yes,,,,No,Yes,70,80,Yes,Kho thường,,10,10,20,500,all.admin - ALLSHIP,20-03-2026 14:36:04,189000
+4,ALL,CÔNG TY TNHH ALLSHIP,AS6018BL,AS6018BL,40000,AS6018BL - Dao cắt băng keo cầm tay (size 2.5 inches) màu xanh dương,DCCK004,Dao cắt băng keo cầm tay (size 2.5 inches) màu xanh dương,8,Hàng quản lý theo số lượng,No,No,Không định nghĩa,,Hàng lẻ,DCCK,Cai,Yes,,,,No,Yes,70,80,Yes,Kho thường,,10,10,20,500,all.admin - ALLSHIP,20-03-2026 14:36:04,189000
