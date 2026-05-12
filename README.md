@@ -103,6 +103,19 @@ PORT=3001
 |---|---|
 | [docs/00-HE_THONG_CHOT_DON_MULTI_BRAND.md](docs/00-HE_THONG_CHOT_DON_MULTI_BRAND.md) | Thiết kế hệ thống tổng quan |
 | [docs/01-CHUC_NANG_CHI_TIET.md](docs/01-CHUC_NANG_CHI_TIET.md) | Danh sách chức năng chi tiết |
+| [docs/MVP_CONTRACT.md](docs/MVP_CONTRACT.md) | Nguồn chuẩn phạm vi MVP: roles, phase scope, state machine |
+| [docs/06-STATE_MACHINE.md](docs/06-STATE_MACHINE.md) | State machine + transition + gate validate |
+| [docs/07-RBAC_POLICY.md](docs/07-RBAC_POLICY.md) | Ma trận phân quyền theo endpoint/action |
+| [docs/08-DATA_CONTRACTS.md](docs/08-DATA_CONTRACTS.md) | Chuẩn dữ liệu input Google Sheets/CSV/Excel |
+| [docs/09-IMPORT_SYNC_RUNBOOK.md](docs/09-IMPORT_SYNC_RUNBOOK.md) | Runbook vận hành import/sync thực tế |
+| [docs/09-EXPORT_SPEC.md](docs/09-EXPORT_SPEC.md) | Đặc tả export Template OR |
+| [docs/10-TEST_PLAN.md](docs/10-TEST_PLAN.md) | Test matrix MVP (Vitest + Supertest) |
+| [docs/11-ERROR_HANDLING.md](docs/11-ERROR_HANDLING.md) | Danh mục lỗi và cách xử lý |
+| [docs/12-SECURITY_BASELINE.md](docs/12-SECURITY_BASELINE.md) | Baseline bảo mật triển khai |
+| [docs/13-OPERATIONS_SLO.md](docs/13-OPERATIONS_SLO.md) | SLO/backup/rollback/release checklist |
+| [docs/14-API_EXAMPLES_COLLECTION.md](docs/14-API_EXAMPLES_COLLECTION.md) | Bộ request/response mẫu API |
+| [docs/15-GLOSSARY.md](docs/15-GLOSSARY.md) | Từ điển thuật ngữ nghiệp vụ/kỹ thuật |
+| [docs/16-MONITORING.md](docs/16-MONITORING.md) | Monitoring, healthcheck, logging |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Roadmap phát triển 3 phase |
 | [CHANGELOG.md](CHANGELOG.md) | Lịch sử thay đổi |
 

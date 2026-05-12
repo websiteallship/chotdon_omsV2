@@ -1,6 +1,6 @@
 # ROADMAP — Hệ thống Chốt Đơn Multi-Brand
 
-**Cập nhật:** 2026-05-11  
+**Cập nhật:** 2026-05-12  
 **Trạng thái:** Đang phát triển Phase 1
 
 ---
@@ -65,9 +65,9 @@ Core + Sheet API    Integration + Fuzzy       Dashboard & Báo cáo
 **Mục tiêu:** Nâng cao chất lượng integration: write-back, fuzzy matching SKU/địa chỉ, auto sync và logging.
 
 ### Tuần 5 — Google Sheets API
-- [ ] Service Account setup + Google Sheets API client
-- [ ] API: Test kết nối sheet (đọc 5 dòng đầu)
-- [ ] API: Sync leads từ Google Sheet → DB (dedup theo `sheet_row_id`)
+- [ ] Harden Google Sheets API client (retry/timeout/error handling)
+- [ ] Chuẩn hóa test-connection + healthcheck cho sync pipeline
+- [ ] Tối ưu sync leads từ Google Sheet → DB (incremental + dedup theo `sheet_row_id`)
 - [ ] API: Write-back `lead_status = "Đã xuất Excel"` sau export
 - [ ] UI: Nút "Sync now", hiển thị kết quả sync
 
@@ -92,6 +92,7 @@ Core + Sheet API    Integration + Fuzzy       Dashboard & Báo cáo
 - [ ] Rate limiting API (express-rate-limit)
 - [ ] Input validation (Zod)
 - [ ] Unit tests core logic (Vitest): parse sản phẩm, parse địa chỉ, state machine
+- [ ] Integration tests API (Vitest + Supertest): sync/import, RBAC, export gate
 - [ ] Load test với 2.000 đơn
 
 **Milestone:** ✅ Sync tự động từ Google Sheet, fuzzy match địa chỉ + SKU
@@ -120,6 +121,7 @@ Core + Sheet API    Integration + Fuzzy       Dashboard & Báo cáo
 - [ ] Monitoring: PM2 logs + Uptime check
 - [ ] Documentation API (Swagger/OpenAPI)
 - [ ] User manual (hướng dẫn sử dụng cho sale)
+- [ ] Runbook vận hành import/sync và incident flow (handover cho sale/admin)
 
 **Milestone:** ✅ Production-ready, multi-brand, realtime dashboard
 

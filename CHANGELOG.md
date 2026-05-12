@@ -13,6 +13,36 @@ Tất cả thay đổi đáng chú ý của dự án được ghi lại tại đ
 - Phase 2: Google Sheets API sync, fuzzy matching
 - Phase 3: Dashboard, realtime, mobile
 
+### Added
+- Bộ tài liệu vận hành và governance cho MVP:
+  - `docs/MVP_CONTRACT.md`
+  - `docs/06-STATE_MACHINE.md`
+  - `docs/07-RBAC_POLICY.md`
+  - `docs/08-DATA_CONTRACTS.md`
+  - `docs/09-IMPORT_SYNC_RUNBOOK.md`
+  - `docs/09-EXPORT_SPEC.md`
+  - `docs/10-TEST_PLAN.md`
+  - `docs/11-ERROR_HANDLING.md`
+  - `docs/12-SECURITY_BASELINE.md`
+  - `docs/13-OPERATIONS_SLO.md`
+  - `docs/14-API_EXAMPLES_COLLECTION.md`
+  - `docs/15-GLOSSARY.md`
+  - `docs/16-MONITORING.md`
+
+### Changed
+- Đồng bộ tài liệu theo `MVP_CONTRACT`:
+  - Chỉ dùng 2 roles: `admin | sale`
+  - Phase 1 bao gồm Google Sheets API + import CSV/Excel chuẩn
+  - State machine nhiều trạng thái (bao gồm `pending`, `template_ready`)
+- Cập nhật `docs/02-DATABASE_SCHEMA.md` để khớp state machine chuẩn từ `docs/06-STATE_MACHINE.md`
+- Cập nhật `docs/03-API_DESIGN.md` để làm rõ RBAC/state machine references và role notes cho orders/export/logs
+- Cập nhật `docs/04-SETUP_GUIDE.md`:
+  - Google Service Account là bắt buộc cho Phase 1 khi dùng sync Sheet
+  - Thống nhất test stack: `Vitest + Supertest`
+- Cập nhật `docs/10-TEST_PLAN.md`:
+  - Chuẩn hóa error codes theo API/error docs (`INVALID_STATE_TRANSITION`, `SKU_NOT_MAPPED`, `ADDRESS_NOT_MAPPED`)
+  - Đồng bộ framework test về `Vitest`
+
 ---
 
 ## [0.1.0] — 2026-05-11
