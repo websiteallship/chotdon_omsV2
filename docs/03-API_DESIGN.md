@@ -2,7 +2,7 @@
 
 **Base URL:** `http://localhost:3001/api`  
 **Auth:** Bearer Token (JWT) trong header `Authorization`  
-**Cập nhật:** 2026-05-11
+**Cập nhật:** 2026-05-12
 
 ---
 
@@ -12,6 +12,8 @@
 - Response lỗi: `{ success: false, error: "message", code: "ERROR_CODE" }`
 - Phân trang: `?page=1&limit=15`
 - Brand context: Mọi request cần `brandId` qua URL param
+- Phân quyền chi tiết theo `07-RBAC_POLICY.md`
+- State machine và gate validate theo `06-STATE_MACHINE.md`
 
 ---
 
@@ -103,6 +105,10 @@
 { "status": "called_1", "product_sku": "D005CS40", "quantity": 2, "price": 269000, "note": "Gọi lại chiều" }
 ```
 
+**Role notes:**
+- `PATCH /brands/:brandId/orders/:id`: `admin` và `sale` đều gọi được, nhưng transition thực tế bị chặn theo RBAC + state machine.
+- `confirmed -> cancelled`, `confirmed -> template_ready`, `template_ready -> exported`: chỉ `admin`.
+
 **sync response:**
 ```json
 { "new": 12, "skipped": 45, "invalid": 2, "invalidRows": [{ "row": 5, "reason": "Thiếu SĐT" }] }
@@ -111,6 +117,8 @@
 ---
 
 ## 6. Export
+
+> `admin` only. `sale` phải nhận `403 FORBIDDEN`.
 
 | Method | Endpoint | Mô tả |
 |---|---|---|
@@ -147,6 +155,8 @@
 ---
 
 ## 8. Logs & History
+
+> `admin` và `sale` đều xem được trong phạm vi brand được gán.
 
 | Method | Endpoint | Mô tả |
 |---|---|---|

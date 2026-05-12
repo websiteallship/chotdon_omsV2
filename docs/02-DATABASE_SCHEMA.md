@@ -241,12 +241,32 @@ CREATE UNIQUE INDEX idx_orders_sheet_row ON orders(brand_id, sheet_row_id);
 CREATE INDEX idx_orders_export_batch   ON orders(export_batch) WHERE export_batch IS NOT NULL;
 ```
 
-**State Machine:**
+**State Machine (nguồn chuẩn: `06-STATE_MACHINE.md`):**
 ```
-new → called_1 → called_2 → called_3 → confirmed → exported
-    ↘ failed (có thể retry về new)
-    ↘ cancelled (terminal)
+new
+ ├→ called_1 → called_2 → called_3
+ │      ├→ pending
+ │      ├→ failed
+ │      └→ confirmed
+ ├→ confirmed → template_ready → exported
+ ├→ pending → called_1 / confirmed / cancelled
+ └→ cancelled
+
+failed → pending
+exported, cancelled = terminal
 ```
+
+**Allowed transitions:**
+- `new` → `called_1`, `confirmed`, `cancelled`, `pending`
+- `called_1` → `called_2`, `confirmed`, `failed`, `pending`
+- `called_2` → `called_3`, `confirmed`, `failed`, `pending`
+- `called_3` → `confirmed`, `failed`, `pending`
+- `failed` → `pending`
+- `pending` → `called_1`, `confirmed`, `cancelled`
+- `confirmed` → `template_ready`, `cancelled`
+- `template_ready` → `exported`
+- `exported` → terminal
+- `cancelled` → terminal
 
 **`product_lines_json` — cấu trúc:**
 ```json

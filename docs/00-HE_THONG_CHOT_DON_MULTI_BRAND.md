@@ -22,10 +22,8 @@ Hệ thống web giúp đội sale chốt đơn hàng từ leads Facebook/Landin
 
 | Role | Quyền |
 |---|---|
-| Super Admin | Quản lý toàn bộ hệ thống, tất cả brand |
-| Brand Admin | Quản lý 1 brand: users, sản phẩm, data sheet |
-| Sale | Xem + chốt đơn thuộc brand được phân |
-| Viewer | Chỉ xem báo cáo, không chỉnh sửa |
+| admin | Quản lý cấu hình brand, users, SKU, import/sync/export trong brand được gán |
+| sale | Xem + xử lý + chốt đơn + sync dữ liệu nguồn (Google Sheets API/CSV) trong brand được gán |
 
 ---
 
@@ -466,7 +464,7 @@ GET    /api/auth/me
 ```
 GET    /api/brands                    # List brands (theo quyền user)
 GET    /api/brands/:id
-POST   /api/brands                    # Tạo brand mới (super admin)
+POST   /api/brands                    # Tạo brand mới (admin)
 PUT    /api/brands/:id/sheet-config   # Cấu hình Google Sheet
 ```
 
@@ -522,16 +520,16 @@ Mọi query đến orders/products đều bắt buộc qua `brand_id`:
 
 ### 10.3 Role matrix
 
-| Action | Super Admin | Brand Admin | Sale | Viewer |
-|---|---|---|---|---|
-| Xem orders | ✅ All | ✅ Own brand | ✅ Own brand | ✅ Own brand |
-| Sửa order / status | ✅ | ✅ | ✅ | ❌ |
-| Import sheet | ✅ | ✅ | ❌ | ❌ |
-| Export xlsx | ✅ | ✅ | ❌ | ❌ |
-| Upload SKU | ✅ | ✅ | ❌ | ❌ |
-| Tạo user | ✅ | ✅ (brand) | ❌ | ❌ |
-| Tạo brand | ✅ | ❌ | ❌ | ❌ |
-| Xem báo cáo | ✅ | ✅ | ❌ | ✅ |
+| Action | admin | sale |
+|---|---|---|
+| Xem orders | ✅ | ✅ |
+| Sửa order / status | ✅ | ✅ |
+| Sync Google Sheets API | ✅ | ✅ |
+| Import leads CSV chuẩn | ✅ | ✅ |
+| Export xlsx | ✅ | ❌ |
+| Upload SKU | ✅ | ❌ |
+| Quản lý users | ✅ | ❌ |
+| Quản lý cấu hình brand | ✅ | ❌ |
 
 ---
 
@@ -540,13 +538,13 @@ Mọi query đến orders/products đều bắt buộc qua `brand_id`:
 ### Phase 1 — Core (MVP)
 - [ ] Auth + phân quyền cơ bản
 - [ ] CRUD brands + users
-- [ ] Import leads từ file CSV (không cần Sheet API)
+- [ ] Import leads đa nguồn: Google Sheets API (manual sync) + file CSV chuẩn
 - [ ] Giao diện chốt đơn + đổi trạng thái
 - [ ] Upload + quản lý SKU per brand
 - [ ] Export file xlsx theo Template OR
 
 ### Phase 2 — Integration
-- [ ] Google Sheets API: sync tự động + write-back
+- [ ] Google Sheets API: auto sync + write-back + tối ưu retry/error handling
 - [ ] Auto-lookup SKU (name + màu + size → SKU code)
 - [ ] Parse địa chỉ → mã phường/quận/tỉnh tự động
 - [ ] Activity log đầy đủ

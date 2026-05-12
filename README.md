@@ -7,8 +7,8 @@ Hệ thống web giúp đội sale chốt đơn hàng từ leads Facebook/Landin
 ## Tính năng chính
 
 - **Multi-brand**: nhiều brand độc lập về data, dùng chung hạ tầng
-- **Import leads** từ Google Sheet (manual sync + auto cron)
-- **Trang chốt đơn**: state machine 6 trạng thái, SKU lookup, địa chỉ 3 cấp
+- **Import leads đa nguồn**: Google Sheets API (manual sync + auto cron) + import CSV chuẩn
+- **Trang chốt đơn**: state machine nhiều trạng thái (`new/called_1/called_2/called_3/pending/failed/confirmed/template_ready/exported/cancelled`), SKU lookup, địa chỉ 3 cấp
 - **Parse sản phẩm** từ chuỗi marketing (`"Mua 2 đôi D005 giá 489k + Freeship..."`)
 - **Map địa chỉ** từ bảng `district_ward_codes` đã import → báo lỗi nếu không khớp
 - **Export xlsx** đúng Template Import OR (tự động điền mã phường/quận)
@@ -112,7 +112,7 @@ PORT=3001
 
 Xem [ROADMAP.md](docs/ROADMAP.md) để biết kế hoạch phát triển.
 
-**Phase 1 (MVP):** Tuần 1–4 — Core features, không cần Google Sheets API  
+**Phase 1 (MVP):** Tuần 1–4 — Core features + Google Sheets API + import CSV chuẩn  
 **Phase 2 (Integration):** Tuần 5–8 — Sheet API, fuzzy matching  
 **Phase 3 (Analytics):** Tuần 9–12 — Dashboard, realtime, mobile  
 

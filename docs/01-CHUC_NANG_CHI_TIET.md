@@ -26,29 +26,29 @@
 
 ## 1. Quản lý Brand
 
-### 1.1 Tạo Brand mới *(Super Admin)*
+### 1.1 Tạo Brand mới *(admin)*
 - Nhập: tên brand, mã brand (code), mã kho, kênh bán hàng mặc định
 - Sinh `brand_code` dùng trong tên file export (`ZAPATI_OR_...`)
 - Mỗi brand hoàn toàn độc lập về data
 
-### 1.2 Cấu hình Google Sheet per Brand *(Brand Admin)*
+### 1.2 Cấu hình Google Sheet per Brand *(admin)*
 - Nhập `sheet_id` (lấy từ URL Google Sheet)
 - Nhập `sheet_range` (ví dụ: `Sheet1!A:U`)
 - Preview 5 dòng đầu của sheet để kiểm tra kết nối
 - Lưu cấu hình vào DB
 
-### 1.3 Cấu hình Column Mapping per Brand *(Brand Admin)*
+### 1.3 Cấu hình Column Mapping per Brand *(admin)*
 - Đọc header row của sheet → hiển thị danh sách cột
 - Admin kéo/chọn dropdown để map: `tên cột sheet` → `trường hệ thống`
 - Các trường cần map: tên KH, SĐT, sản phẩm, màu, size, địa chỉ, ghi chú, utm_source, utm_campaign, lead_status
 - Lưu dạng JSON `column_mapping` vào bảng `brands`
 - Cảnh báo nếu thiếu trường bắt buộc (tên, SĐT)
 
-### 1.4 Xem danh sách Brand *(Super Admin)*
+### 1.4 Xem danh sách Brand *(admin)*
 - Danh sách tất cả brand với trạng thái kết nối sheet
 - Số liệu tổng: tổng leads, tổng đơn chốt, tổng đơn đã export
 
-### 1.5 Chỉnh sửa / Vô hiệu hóa Brand *(Super Admin)*
+### 1.5 Chỉnh sửa / Vô hiệu hóa Brand *(admin)*
 - Sửa tên, code, cấu hình
 - Vô hiệu hóa brand (ẩn khỏi hệ thống, giữ nguyên data)
 
@@ -82,7 +82,7 @@
 
 ## 3. Tích hợp Google Sheets
 
-### 3.1 Kiểm tra kết nối Sheet *(Brand Admin)*
+### 3.1 Kiểm tra kết nối Sheet *(admin)*
 - Test đọc 5 dòng đầu của sheet
 - Báo lỗi nếu: sheet không tồn tại, Service Account không có quyền, range sai
 
@@ -103,7 +103,7 @@
 
 ## 4. Import & Sync Leads
 
-### 4.1 Manual Sync *(Brand Admin)*
+### 4.1 Manual Sync *(admin | sale)*
 - Bấm "Sync now" → kéo toàn bộ row mới từ sheet
 - Dedup bằng `sheet_row_id`: chỉ insert row chưa có trong DB
 - Hiển thị kết quả: X leads mới, Y đã có (bỏ qua)
@@ -261,7 +261,7 @@ Dropdown tìm kiếm SKU, filter theo tên/màu/size, chọn → auto fill
 
 ## 9. Quản lý Danh sách Sản phẩm (SKU)
 
-### 9.1 Upload file SKU *(Brand Admin)*
+### 9.1 Upload file SKU *(admin)*
 File mẫu: `Danh sách sản phẩm chi tiết.csv` — format thực tế WMS OR:
 
 | Cột CSV | Field DB |
@@ -282,7 +282,7 @@ SKU format: `{MODEL}{COLOR_CODE}{SIZE}` (e.g. `D005CR40`, `T003BR44`)
 - Lọc theo model (D005, T003...), màu, size, active
 - Tìm kiếm theo SKU/tên
 
-### 9.3 Thêm / Sửa SKU thủ công *(Brand Admin)*
+### 9.3 Thêm / Sửa SKU thủ công *(admin)*
 - Form: SKU, tên, model_code, color_code, size, selling_price, partner_sku
 
 ### 9.4 Vô hiệu hóa SKU
@@ -369,15 +369,15 @@ SKU format: `{MODEL}{COLOR_CODE}{SIZE}` (e.g. `D005CR40`, `T003BR44`)
 
 ## 12. Cài đặt Hệ thống
 
-### 12.1 Cài đặt Google Sheet *(Brand Admin)*
+### 12.1 Cài đặt Google Sheet *(admin)*
 - Sheet ID, Sheet Range, Column Mapping
 - Nút test kết nối
 - Interval auto sync
 
-### 12.2 Cài đặt Brand *(Brand Admin)*
+### 12.2 Cài đặt Brand *(admin)*
 - Tên, mã brand, mã kho, kênh bán hàng mặc định
 
-### 12.3 Quản lý DistrictWardCode *(Super Admin)*
+### 12.3 Quản lý DistrictWardCode *(admin)*
 - Import file mã phường/quận từ Template OR
 - Rebuild index pg_trgm
 
@@ -439,8 +439,9 @@ SKU format: `{MODEL}{COLOR_CODE}{SIZE}` (e.g. `D005CR40`, `T003BR44`)
 - Auth (2 roles: admin / sale) + JWT stateless
 - CRUD Brands + Users per brand
 - Upload + quản lý SKU per brand (drag & drop)
-- Import leads từ Google Sheet (manual sync)
-- Trang chốt đơn + state machine (6 trạng thái: new/called/confirmed/failed/exported/cancelled)
+- Import leads từ Google Sheet API (manual sync)
+- Import leads từ CSV/Excel chuẩn (manual import)
+- Trang chốt đơn + state machine nhiều trạng thái (`new/called_1/called_2/called_3/pending/failed/confirmed/template_ready/exported/cancelled`)
 - Column Mapping UI per brand (add/edit/remove trường)
 - Parse sản phẩm từ chuỗi marketing (regex + combo selector)
 - Map địa chỉ 3 cấp từ bảng đã import (exact match → báo lỗi để sửa thủ công)

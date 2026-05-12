@@ -11,14 +11,14 @@
 Phase 1 (MVP)       Phase 2 (Integration)     Phase 3 (Analytics)
 ───────────────     ─────────────────────     ────────────────────
 Tuần 1–4            Tuần 5–8                  Tuần 9–12
-Core features       Google Sheets API         Dashboard & Báo cáo
+Core + Sheet API    Integration + Fuzzy       Dashboard & Báo cáo
 ```
 
 ---
 
 ## Phase 1 — MVP *(Tuần 1–4)*
 
-**Mục tiêu:** Hệ thống hoạt động end-to-end cho 1 brand, không cần tích hợp Google Sheets API.
+**Mục tiêu:** Hệ thống hoạt động end-to-end cho 1 brand, bao gồm Google Sheets API và import CSV chuẩn.
 
 ### Tuần 1 — Backend Foundation
 - [ ] Khởi tạo project (Node.js + Express + Prisma + PostgreSQL)
@@ -38,7 +38,8 @@ Core features       Google Sheets API         Dashboard & Báo cáo
 ### Tuần 3 — Business Logic
 - [ ] Parse chuỗi sản phẩm marketing (Regex engine)
 - [ ] Parse + Map địa chỉ 3 cấp từ `district_ward_codes` (exact match)
-- [ ] Import leads từ file CSV/Excel (manual, không qua Sheet API)
+- [ ] Import leads từ file CSV/Excel chuẩn (manual import)
+- [ ] Google Sheets API sync (manual sync trong MVP)
 - [ ] Column Mapping config per brand (lưu JSONB)
 - [ ] API Export: generate file xlsx Template OR (ExcelJS)
   - Map địa chỉ → `district_code`, `ward_code`
@@ -55,13 +56,13 @@ Core features       Google Sheets API         Dashboard & Báo cáo
 - [ ] Trang History: log sync/import/export
 - [ ] Deploy lên VPS (Hetzner CX22) với PM2 + Nginx
 
-**Milestone:** ✅ Admin có thể import leads từ CSV → chốt đơn → export xlsx Template OR
+**Milestone:** ✅ Admin có thể sync leads từ Google Sheets API + import CSV chuẩn → chốt đơn nhiều trạng thái → export xlsx Template OR
 
 ---
 
-## Phase 2 — Integration *(Tuần 5–8)*
+## Phase 2 — Integration & Fuzzy *(Tuần 5–8)*
 
-**Mục tiêu:** Tích hợp Google Sheets API, nâng cao matching SKU và địa chỉ.
+**Mục tiêu:** Nâng cao chất lượng integration: write-back, fuzzy matching SKU/địa chỉ, auto sync và logging.
 
 ### Tuần 5 — Google Sheets API
 - [ ] Service Account setup + Google Sheets API client

@@ -9,7 +9,7 @@ Tất cả thay đổi đáng chú ý của dự án được ghi lại tại đ
 ## [Unreleased]
 
 ### Planned
-- Phase 1 MVP: Auth, CRUD, Import CSV, Export xlsx, trang chốt đơn
+- Phase 1 MVP: Auth, CRUD, Google Sheets API sync, Import CSV chuẩn, Export xlsx, trang chốt đơn nhiều trạng thái
 - Phase 2: Google Sheets API sync, fuzzy matching
 - Phase 3: Dashboard, realtime, mobile
 

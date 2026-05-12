@@ -110,7 +110,7 @@ npm run dev
 
 ---
 
-## 4. Google Service Account (optional ở Phase 1)
+## 4. Google Service Account (bắt buộc ở Phase 1 nếu dùng sync Sheet)
 
 1. Vào [Google Cloud Console](https://console.cloud.google.com)
 2. Tạo project → Enable **Google Sheets API**
@@ -148,6 +148,10 @@ npx prisma generate
 | Build backend | `cd backend && npm run build` | Compile TS |
 | Build frontend | `cd frontend && npm run build` | Vite build |
 | Tests | `cd backend && npm test` | Vitest |
+
+> Quy ước test stack của dự án:
+- Unit tests: `Vitest`
+- Integration/API tests: `Vitest` + `Supertest`
 
 ---
 
